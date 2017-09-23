@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE vxml PUBLIC "-//Nuance/DTD VoiceXML 2.0//ZH" "http://voicexml.nuance.com/dtd/nuancevoicexml-2-0.dtd">
+<vxml xmlns="http://www.w3.org/2001/vxml" version="2.0" xml:lang="zh-CN">
+    <property name="maxspeechtimeout" value="10s" />
+    <property name="sensitivity" value="0.50" />
+    <property name="incompletetimeout" value="1s" />
+    <property name="confidencelevel" value="0.15" />
+    <property name="timeout" value="3s" />
+    <!--<property name="swirec.swiep_in_prompt_sensitivity_percent" value="20" /> -->
+    <property name="bargein" value="false"/>
+    <var name="nishishei" expr="''"/>
+
+    <form id="who2u">
+
+
+
+        <block>
+            <assign name="nishishei" expr="session.connection.remote.uri"/>
+            <if cond="nishishei=='sip:13916201791@xiaoi.com'"><!-- 1 -->
+                <prompt><audio src="../audios/HELLO_Z.wav"/></prompt>
+                <goto next="#A2"/>
+            </if>
+            <if cond="nishishei=='sip:13501695900@xiaoi.com'"><!-- 1 -->
+                <prompt><audio src="../audios/HELLO_W.wav"/></prompt>
+                <goto next="#A2"/>
+            </if>
+            <if cond="nishishei=='sip:18918973540@xiaoi.com'"><!-- 1 -->
+                <prompt><audio src="../audios/HELLO_X.wav"/></prompt>
+                <goto next="#A2"/>
+            </if>
+            <goto next="#A1"/>
+        </block>
+
+    </form>
+
+
+    <form id="A1">
+        <field name="A1">
+            <prompt>
+                这里是深圳供电局智能语音客服系统，请问有什么可以帮您？
+            </prompt>
+            <grammar src="../grammars/query.grxml"/>
+            <filled>
+                <if cond="A1.dm_root=='yes'">
+                    <goto next="#A2"/>
+                    <else/>
+                    <goto next="#A2"/>
+                </if>
+                <goto next="#A2"/>
+            </filled>
+        </field>
+
+        <catch event="noinput nomatch">
+            <goto next="#A2"/>
+        </catch>
+
+    </form>
+
+    <form id="A2">
+        <field name="A2">
+            <prompt>尊敬的客户，2014年9月计划停电检修的线路如下：A线路2014年9月1日检修,B线路2014年9月2日检修,请问还有什么可以帮你？</prompt>
+            <grammar src="../grammars/query.grxml"/>
+            <filled>
+                <if cond="A2.dm_root=='rej'"><!-- 1 -->
+                    <goto next="#A4"/>
+                </if>
+                <prompt>标签是<value expr="A2.dm_root"/></prompt>
+            </filled>
+        </field>
+
+        <catch event="noinput nomatch"> <!-- 5 -->
+            <goto next="#A4"/>
+        </catch>
+
+    </form>
+    <form id="A4">
+        <field name="A4">
+            <prompt>好的，感谢您的致电</prompt>
+        </field>
+    </form>
+</vxml>
