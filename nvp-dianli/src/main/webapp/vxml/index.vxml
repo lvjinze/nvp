@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--添加vxml约束,必须添加-->
+<!DOCTYPE vxml PUBLIC "-//Nuance/DTD VoiceXML 2.0//ZH" "http://voicexml.nuance.com/dtd/nuancevoicexml-2-0.dtd">
+<!--指定xml版本-->
+<vxml version="2.0">
+    <form id="main">
+        <field name="main">
+            <prompt>
+                这里是深圳供电局智能语音客服系统，请问有什么可以帮您？
+            </prompt>
+            <grammar src="../grammars/query.grxml"/>
+            <filled>
+                <if cond="main.dm_root=='findPowerCut'">
+                    <goto next="#A2"/>
+                    <else/>
+                    <!--并不可以实现跳转-->
+                    <goto next="#A3"/>
+                </if>
+            </filled>
+            <!--<catch event="noinput nomatch">-->
+                <!--<goto next="#A3"/>-->
+            <!--</catch>-->
+        </field>
+    </form>
+    <!--查询停电信息-->
+    <form id="A2">
+        <block>
+            <prompt>正确的语术</prompt>
+        </block>
+    </form>
+    <form id="A3">
+        <block>错误的语术</block>
+    </form>
+</vxml>

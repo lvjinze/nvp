@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="nvp-waihu:war">
+    <output-path>$PROJECT_DIR$/nvp-waihu/target</output-path>
+    <root id="archive" name="nvp-waihu.war">
+      <element id="artifact" artifact-name="nvp-waihu:war exploded" />
+    </root>
+  </artifact>
+</component>

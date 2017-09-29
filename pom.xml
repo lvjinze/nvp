@@ -7,6 +7,14 @@
     <groupId>com.litong</groupId>
     <artifactId>nvp</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <modules>
+        <module>study</module>
+        <module>clounconnect</module>
+        <module>nvp-web-recivecode</module>
+        <module>nvp-dianli</module>
+        <module>nvp-waihu</module>
+        <module>nvp-webservice-maven</module>
+    </modules>
+    <packaging>pom</packaging>
 
 </project>

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="nvp-waihu:war exploded">
+    <output-path>$PROJECT_DIR$/nvp-waihu/target/nvp-waihu</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="nvp-waihu" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="D:\IdeaProjects\nvp\nvp-waihu\target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="nvp-waihu/web/Web" />
+    </root>
+  </artifact>
+</component>
